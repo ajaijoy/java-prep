@@ -13,9 +13,34 @@ import java.util.Map;
  *
  */
 public class CheckStringAnagrams {
-
-	public static void main(String []args){
+	
+	public static void usingStrings(){
+		String s1 = "Army";
+		String s2 = "Mary";
 		
+		if(s1.length() != s2.length()){
+			System.out.println("not an anagram");
+		}
+		
+		char[] s1CharArray = s1.toLowerCase().toCharArray();
+		int index = 0;
+		
+		for(char c : s1CharArray){
+			 index = s2.toLowerCase().indexOf(c);
+			 
+			 if(index != -1){
+				 s2 = s2.substring(0,index) + s2.substring(index+1, s2.length());
+				 System.out.println("Dropping the current char to shorten the string : "+c);
+			 }else{
+				 System.out.println("not an anagram");
+			 }
+		}
+		
+		if(s2.isEmpty())
+			System.out.println("s1 s2 is an anagram");
+	}
+	
+	public static void usingMaps(){
 		boolean isAnagram = true;
 		String s1 = "Army";
 		String s2 = "Maary";
@@ -53,5 +78,10 @@ public class CheckStringAnagrams {
 		
 		if(isAnagram)
 		System.out.println(s1+"  "+s2+" are anagrams");
+	}
+
+	public static void main(String []args){
+		
+		usingStrings();
 	}
 }
